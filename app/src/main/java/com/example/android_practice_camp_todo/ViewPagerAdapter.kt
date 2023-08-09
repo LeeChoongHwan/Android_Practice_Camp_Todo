@@ -9,8 +9,8 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter
 
     override fun createFragment(position: Int): Fragment {
         return when(position) {
-            1 -> TodoFragment()
-            else -> BookmarkFragment()
+            1 -> BookmarkFragment()
+            else -> TodoFragment()
         }
     }
 
