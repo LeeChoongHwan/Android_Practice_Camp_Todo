@@ -4,8 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_practice_camp_todo.databinding.ItemTodoBinding
+import com.example.android_practice_camp_todo.dataclass.Todo
 
-class TodoRecyclerViewAdapter : RecyclerView.Adapter<TodoRecyclerViewAdapter.MyViewHolder>() {
+class TodoRecyclerViewAdapter(private val todo : Array<Todo>)
+    : RecyclerView.Adapter<TodoRecyclerViewAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(val binding : ItemTodoBinding) : RecyclerView.ViewHolder(binding.root) {
         var text = binding.todoText
@@ -20,8 +22,11 @@ class TodoRecyclerViewAdapter : RecyclerView.Adapter<TodoRecyclerViewAdapter.MyV
     }
 
     override fun onBindViewHolder(holder: TodoRecyclerViewAdapter.MyViewHolder, position: Int) {
-        holder.binding.todoText.text = "text"
+        val todo : Todo = todo[position]
+        holder.binding.todoText.text = todo.title
     }
 
-    override fun getItemCount(): Int =10
+    override fun getItemCount(): Int {
+        return todo.size
+    }
 }
